@@ -1,7 +1,7 @@
 
 def join(*lists,sep='-'):
     """
-    The function receives lists and joins them into one list
+    The function receives lists and merge them into one list with sep between them
     :param lists:lists to join
     :param sep: Character to be placed between lists
     :return: The list that created
