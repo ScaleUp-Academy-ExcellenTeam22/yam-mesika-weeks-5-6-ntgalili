@@ -2,9 +2,9 @@ import random
 import datetime
 
 
-def find_date_between(first_date:datetime,end_date:datetime):
+def find_date_between(first_date:datetime,end_date:datetime)->datetime:
     """
-    the function find date between two dates
+    The function find date between two dates
     :param first_date: first date
     :param end_date: second date
     :return: the new date
@@ -15,7 +15,7 @@ def find_date_between(first_date:datetime,end_date:datetime):
     return datetime.datetime.fromtimestamp(rand_epoch)  # find the new date
 
 
-def is_monday(date:datetime):
+def is_monday(date:datetime)->bool:
     """
     check if the day of the date is monday
     :param date: date
@@ -33,7 +33,7 @@ def main():
     new_date=find_date_between(first_date,end_date)  # find the new date
 
     print(new_date.strftime('%Y-%m-%d'))
-    if is_monday(new_date):
+    if is_monday(new_date): # if the day is monday
         print("I have no vinaigrette!")
 
 
