@@ -13,7 +13,7 @@ def is_complete(num_pieces: int) -> bool:
 def complete_meals() -> int:
     """
     The function returns the complete numbers
-    :return:
+    :return: complete number
     """
     meal = 6
     while True:  # go over the numbers
