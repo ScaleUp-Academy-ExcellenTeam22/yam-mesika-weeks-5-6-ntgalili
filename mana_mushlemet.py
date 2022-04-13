@@ -1,32 +1,32 @@
 
 
-def is_complete(num_pieces: int) -> bool:
+def is_perfect(pieces_in_meal: int) -> bool:
     """
-    The function get a number and check if it complete meal
-    :param num_pieces: number of pieces in the meal
-    :return: true if the meal is complete and false if not
+    The function gets a number and checks if it is a complete meal
+    :param pieces_in_meal: number of pieces in the meal
+    :return:True if the meal is complete and False if not
     """
-    divisions = [div for div in range(1, num_pieces) if num_pieces % div == 0]  # Finding the possible divisions
-    return num_pieces == sum(divisions)  # check if the number == the sum of it's possible divisions
+    divisors = [divisor for divisor in range(1, pieces_in_meal) if pieces_in_meal % divisor == 0]   # Finding the possible divisions
+    return pieces_in_meal == sum(divisors)  # check if the number == the sum of it's possible divisions
 
 
-def complete_meals() -> int:
+def perfect_numbers() -> int:
     """
-    The function returns the complete numbers
+    The function returns the perfect numbers -  which are equal to the sum of the numbers that divide them
     :return: complete number
     """
-    meal = 6
+    num_to_check = 6
     while True:  # go over the numbers
-        if is_complete(meal):  # return the meal if it complete
-            yield meal
-        meal += 1
+        if is_perfect(num_to_check):  # return the number if it perfect
+            yield num_to_check
+        num_to_check += 1
 
 
 def main():
     """
-    The program prints the complete numbers
+    The program prints the perfect numbers
     """
-    for complete_meal in complete_meals():  # go over the complete numbers and print them
+    for complete_meal in perfect_numbers():  # go over the perfect numbers and print them
         print(complete_meal)
 
 
