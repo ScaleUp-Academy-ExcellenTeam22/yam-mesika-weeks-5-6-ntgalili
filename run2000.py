@@ -5,7 +5,7 @@ from typing import Callable
 
 def timer(function_to_check: Callable, *params_for_function, **k_params_for_function) -> time:
     """
-    THe function calculates the run time of function
+    The function calculates the run time of the given function
     :param function_to_check: function to calculate it's time
     :param params_for_function: params for the function
     :param k_params_for_function: key params to the function
