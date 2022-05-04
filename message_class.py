@@ -1,3 +1,4 @@
+
 class Message:
     """
     Message class, the class represents a virtual message.
@@ -5,23 +6,39 @@ class Message:
     :ivar id: message id.
     :ivar sender: The sender's name.
     :ivar body: The message content.
-
+    :ivar is_read: Indicates whether the message was read.
     """
     def __init__(self, message_id: int, message_sender: str, message_body: str, is_read: bool = False):
+        """
+        c-tor for message class.
+        :param message_id: message id.
+        :param message_sender: The sender's name.
+        :param message_body: The message content.
+        :param is_read:  Indicates whether the message was read.
+        """
         self.id = message_id
         self.sender = message_sender
         self.body = message_body
         self.is_read = is_read
 
     def __str__(self):
+        """
+        Convert the message to str.
+        :return:  str of the message.
+        """
         return f"message id: {str(self.id)} message sender: {self.sender} \n {self.body}"
 
     def __len__(self):
+        """
+        Calculates the message size.
+        :return: The message size.
+        """
         return len(self.body)
 
 
 class PostOffice:
-    """A Post Office class. Allows users to message each other.
+    """
+    A Post Office class. Allows users to message each other.
 
     :ivar message_id: Incremental id of the last message sent.
     :ivar dict boxes: Users' inboxes.
@@ -29,12 +46,17 @@ class PostOffice:
     :param list usernames: Users for which we should create PO Boxes.
     """
 
-    def __init__(self, usernames):
+    def __init__(self, usernames: list):
+        """
+        c-tor for message class.
+        :param usernames: List of users name.
+        """
         self.message_id = 0
         self.boxes = {user: [] for user in usernames}
 
     def send_message(self, sender, recipient, message_body, urgent=False):
-        """Send a message to a recipient.
+        """
+        Send a message to a recipient.
 
         :param str sender: The message sender's username.
         :param str recipient: The message recipient's username.
