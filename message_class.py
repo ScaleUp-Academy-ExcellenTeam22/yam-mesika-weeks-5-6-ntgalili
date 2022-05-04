@@ -1,16 +1,17 @@
 class Message:
     """
-    Message class. Represents a virtual message
+    Message class, the class represents a virtual message.
 
-    :ivar id: id to the message.
+    :ivar id: message id.
     :ivar sender: The sender's name.
     :ivar body: The message content.
 
     """
-    def __init__(self, message_id: int, message_sender: str, message_body: str):
+    def __init__(self, message_id: int, message_sender: str, message_body: str, is_read: bool = False):
         self.id = message_id
         self.sender = message_sender
         self.body = message_body
+        self.is_read = is_read
 
     def __str__(self):
         return f"message id: {str(self.id)} message sender: {self.sender} \n {self.body}"
@@ -61,8 +62,9 @@ class PostOffice:
         :return: List of the requested messages.
         :raises KeyError: if the username does not exist.
         """
-        to_return = self.boxes[username][:number_of_messages]
-        del self.boxes[username][number_of_messages:]
+        to_return = filter(lambda m: not m.is_read,self.boxes[username])[:number_of_messages]
+        for message in to_return:
+            message.is_read = True
         return to_return
 
     def search_inbox(self, username: str, to_search: str) -> list:
