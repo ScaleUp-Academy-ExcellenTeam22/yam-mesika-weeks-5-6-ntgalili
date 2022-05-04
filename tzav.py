@@ -1,4 +1,3 @@
-import math
 
 
 class PostOffice:
@@ -32,6 +31,7 @@ class PostOffice:
             'id': self.message_id,
             'body': message_body,
             'sender': sender,
+            'is_read': False
         }
         if urgent:
             user_box.insert(0, message_details)
@@ -47,8 +47,9 @@ class PostOffice:
         :return: List of the requested messages.
         :raises KeyError: if the username does not exist.
         """
-        to_return = self.boxes[username][:number_of_messages]
-        del self.boxes[username][number_of_messages:]
+        to_return = filter(lambda m: not m['is_read'],self.boxes[username]) [:number_of_messages]
+        for message in to_return:
+            message['is_read'] = True
         return to_return
 
     def search_inbox(self, username: str, to_search: str) -> list:
