@@ -1,5 +1,6 @@
 
 class Message:
+    
     """
     Message class, the class represents a virtual message.
 
