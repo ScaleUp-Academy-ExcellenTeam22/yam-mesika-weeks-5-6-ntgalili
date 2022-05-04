@@ -1,9 +1,7 @@
 
 class Message:
-    
     """
     Message class, the class represents a virtual message.
-
     :ivar id: message id.
     :ivar sender: The sender's name.
     :ivar body: The message content.
@@ -40,11 +38,8 @@ class Message:
 class PostOffice:
     """
     A Post Office class. Allows users to message each other.
-
     :ivar message_id: Incremental id of the last message sent.
     :ivar dict boxes: Users' inboxes.
-
-    :param list usernames: Users for which we should create PO Boxes.
     """
 
     def __init__(self, usernames: list):
