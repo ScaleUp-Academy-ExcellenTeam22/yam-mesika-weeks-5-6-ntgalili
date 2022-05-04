@@ -1,7 +1,8 @@
 
 
 class PostOffice:
-    """A Post Office class. Allows users to message each other.
+    """
+    A Post Office class. Allows users to message each other.
 
     :ivar int message_id: Incremental id of the last message sent.
     :ivar dict boxes: Users' inboxes.
@@ -10,11 +11,16 @@ class PostOffice:
     """
 
     def __init__(self, usernames):
+        """
+        c-tor for message class.
+        :param usernames: List of users name.
+        """
         self.message_id = 0
         self.boxes = {user: [] for user in usernames}
 
     def send_message(self, sender, recipient, message_body, urgent=False):
-        """Send a message to a recipient.
+        """
+        Send a message to a recipient.
 
         :param str sender: The message sender's username.
         :param str recipient: The message recipient's username.
@@ -47,7 +53,7 @@ class PostOffice:
         :return: List of the requested messages.
         :raises KeyError: if the username does not exist.
         """
-        to_return = filter(lambda m: not m['is_read'],self.boxes[username]) [:number_of_messages]
+        to_return = list(filter(lambda m: not m['is_read'], self.boxes[username]))[:number_of_messages]
         for message in to_return:
             message['is_read'] = True
         return to_return
@@ -62,6 +68,3 @@ class PostOffice:
         """
         user_box = self.boxes[username]
         return [message for message in user_box if (to_search in message['body'] or to_search in message['sender'])]
-
-
-
