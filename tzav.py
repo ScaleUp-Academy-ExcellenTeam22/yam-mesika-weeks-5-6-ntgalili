@@ -1,20 +1,16 @@
 
 
 class PostOffice:
-
     """
     A Post Office class. Allows users to message each other.
-
     :ivar int message_id: Incremental id of the last message sent.
     :ivar dict boxes: Users' inboxes.
-
-    :param list usernames: Users for which we should create PO Boxes.
     """
 
     def __init__(self, usernames):
         """
         c-tor for message class.
-        :param usernames: List of users name.
+        :param usernames: Users for which we should create PO Boxes.
         """
         self.message_id = 0
         self.boxes = {user: [] for user in usernames}
