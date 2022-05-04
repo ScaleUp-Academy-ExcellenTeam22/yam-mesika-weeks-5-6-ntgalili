@@ -23,7 +23,7 @@ class Message:
 class PostOffice:
     """A Post Office class. Allows users to message each other.
 
-    :ivar id: Incremental id of the last message sent.
+    :ivar message_id: Incremental id of the last message sent.
     :ivar dict boxes: Users' inboxes.
 
     :param list usernames: Users for which we should create PO Boxes.
@@ -62,7 +62,7 @@ class PostOffice:
         :return: List of the requested messages.
         :raises KeyError: if the username does not exist.
         """
-        to_return = filter(lambda m: not m.is_read,self.boxes[username])[:number_of_messages]
+        to_return = list(filter(lambda m: not m.is_read, self.boxes[username]))[:number_of_messages]
         for message in to_return:
             message.is_read = True
         return to_return
